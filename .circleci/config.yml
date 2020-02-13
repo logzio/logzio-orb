@@ -28,8 +28,8 @@ jobs:
     executor: orb-tools/ubuntu
     steps:
       - checkout
-#      - logzio-orb/submit:
-#          dir-path: logs
+      - logzio-orb/submit:
+          dir-path: logs
 
 workflows:
   # This `lint-pack_validate_publish-dev` workflow will run on any commit.
