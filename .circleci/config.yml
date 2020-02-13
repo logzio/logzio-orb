@@ -28,7 +28,7 @@ jobs:
     executor: orb-tools/ubuntu
     steps:
       - checkout
-      - logzio-orb/submit:
+      - logzio/submit:
           dir-path: logs
 
 workflows:
