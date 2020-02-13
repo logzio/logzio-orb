@@ -28,7 +28,8 @@ jobs:
     executor: orb-tools/ubuntu
     steps:
       - checkout
-    # - your-orb/your-orb-command
+#      - logzio-orb/submit:
+#          dir-path: logs
 
 workflows:
   # This `lint-pack_validate_publish-dev` workflow will run on any commit.
@@ -83,9 +84,7 @@ workflows:
       - orb-tools/dev-promote-prod-from-commit-subject:
           orb-name: logzio/logzio-orb
 
-          add-pr-comment: true
-          bot-token-variable: GH_BOT_USER_TOKEN
-          bot-user: 
+          add-pr-comment: false
           fail-if-semver-not-indicated: true
           publish-version-tag: true
           ssh-fingerprints: x
