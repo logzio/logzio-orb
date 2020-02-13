@@ -1,14 +1,26 @@
-# How to author commands: https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-commands
 description: >
-  Replace this text with a description for this command.
-  # What will this command do?
-  # Descriptions should be short, simple, and clear.
+  "Collect data from this job and report to Logz.io. Note: MUST BE THE LAST COMMAND IN JOB AND THE DATA NEEDS TO BE LESS THEN 10MB."
 parameters:
-  greeting:
+  dir-path:
     type: string
-    default: "Hello"
-    description: "Select a proper greeting"
+    description: absolute or relative path to the directory you wish to upload. Do not include trailing slash.
+  logzio-url:
+    type: string
+    description: "Your Logz.io listener URL, port, and token. The format should look like this:
+                    PROTOCOL://LOGZIO_HOST:PORT(https://listener.logz.io:8022) "
+    default: "https://listener.logz.io:8022"
+  logzio-token:
+    type: env_var_name
+    description: "This is your Logz.io account token"
+    default: LOGZIO_TOKEN
 steps:
   - run:
-      name: Hello World
-      command: echo << parameters.greeting >> world
+      name: Logz.io Send Log file
+      when: always
+      command: |
+        # Send data to Logz.io
+        gzip <<parameters.dir-path>>/*
+        for file in <<parameters.dir-path>>/*
+        do
+            curl -v -i <<parameters.logzio-url>>/file_upload/<<parameters.logzio-token>>/circleci -H'Content-Encoding: gzip' --data-binary @$file;
+        done;
