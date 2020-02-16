@@ -1,0 +1,50 @@
+commands:
+  submit:
+    description: |
+      "Collect data from this job and report to Logz.io. Note: MUST BE THE LAST COMMAND IN JOB AND THE DATA NEEDS TO BE LESS THEN 10MB."
+    parameters:
+      dir-path:
+        description: absolute or relative path to the directory you wish to upload.
+          Do not include trailing slash.
+        type: string
+      logzio-token:
+        default: LOGZIO_TOKEN
+        description: This is your Logz.io account token
+        type: env_var_name
+      logzio-url:
+        default: https://listener.logz.io:8022
+        description: 'Your Logz.io listener URL, port, and token. The format should
+          look like this: PROTOCOL://LOGZIO_HOST:PORT(https://listener.logz.io:8022) '
+        type: string
+    steps:
+    - run:
+        command: |
+          # Send data to Logz.io
+          gzip <<parameters.dir-path>>/*
+          for file in <<parameters.dir-path>>/*
+          do
+              curl -v -i <<parameters.logzio-url>>/file_upload/<<parameters.logzio-token>>/circleci -H'Content-Encoding: gzip' --data-binary @$file;
+          done;
+        name: Logz.io Send Log file
+        when: always
+description: |
+  Integrate Logz.io with your CircleCI CI/CD pipeline easily with the logzio-orb.
+display:
+  home_url: https://logz.io/
+  source_url: https://github.com/logzio/logzio-orb
+examples:
+  example:
+    description: |
+      Sample example description. # What will this example document? # Descriptions should be short, simple, and clear.
+    usage:
+      jobs:
+        build:
+          machine: true
+          steps:
+          - foo/hello:
+              username: Anna
+      orbs:
+        foo: bar/foo@1.2.3
+      version: 2.1
+version: 2.1
+
