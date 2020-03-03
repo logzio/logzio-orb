@@ -28,8 +28,8 @@ jobs:
     executor: orb-tools/ubuntu
     steps:
       - checkout
-#      - logzio-orb/submit:
-#          dir-path: logs
+      - logzio-orb/submit:
+          dir-path: logs
 
 workflows:
   # This `lint-pack_validate_publish-dev` workflow will run on any commit.
@@ -86,7 +86,7 @@ workflows:
 
           add-pr-comment: false
           fail-if-semver-not-indicated: true
-#          publish-version-tag: true
+          publish-version-tag: false
 #          ssh-fingerprints: 48:c7:73:a9:69:62:28:b3:dd:f2:97:4f:8c:5d:c0:aa
           requires:
             - integration-test-1
