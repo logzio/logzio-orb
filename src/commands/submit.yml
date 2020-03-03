@@ -22,5 +22,5 @@ steps:
         gzip <<parameters.dir-path>>/*
         for file in <<parameters.dir-path>>/*
         do
-            curl -v -i <<parameters.logzio-url>>/file_upload/<<parameters.logzio-token>>/circleci -H'Content-Encoding: gzip' --data-binary @$file;
+            curl -v -i <<parameters.logzio-url>>/file_upload/$<<parameters.logzio-token>>/circleci -H'Content-Encoding: gzip' --data-binary @$file;
         done;
