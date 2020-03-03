@@ -1,0 +1,12 @@
+description: >
+  How to send a log file to Logz.io
+usage:
+  version: 2.1
+  orbs:
+    logzio-orb: logzio/logzio-orb@x.y
+  jobs:
+    build:
+      machine: true
+      steps:
+          - logzio-orb/submit:
+              dir-path: logs
