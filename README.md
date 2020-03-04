@@ -1,6 +1,6 @@
 # logzio-orb Orb [![CircleCI Build Status](https://circleci.com/gh/logzio/logzio-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/logzio/logzio-orb) [![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/logzio/logzio-orb)](https://circleci.com/orbs/registry/orb/logzio/logzio-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/logzio/logzio-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-Utilize this orb to easily add Logz.io to your CI/CD pipeline. This orb collects data from a job and report its logs to Logz.io
+Utilize this orb to easily add Logz.io to your CI/CD pipeline. This orb collects data from a job and sends its logs to Logz.io
 
 ## Usage
 
