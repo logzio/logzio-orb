@@ -12,7 +12,7 @@ Example use-cases are provided on the orb [registry page](https://circleci.com/o
 [CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/logzio/logzio-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.  
 [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.  
 
-## How To Contribute
+## How to contribute
 
 We welcome [issues](https://github.com/logzio/logzio-orb/issues) to and [pull requests](https://github.com/logzio/logzio-orb/pulls) against this repository!
 
